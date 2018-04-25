@@ -10,9 +10,10 @@
 
 }
 
-button {
-   background-color: bisque;
-   color: black
+.btn {
+   border-radius: 8px;
+   margin-top: 30px;
+
 }
 
 .login-form {
@@ -22,8 +23,17 @@ button {
     left: 50%;
     top: 50%;
     text-align: center;        
-    width:546px;
-    height:265px;
-    margin-left: -273px; 
-    margin-top: -132px; 
+    width:300px;
+    height:300px;
+    margin-left: -150px; 
+    margin-top: -110px; 
+}
+
+.container {
+    width: 360px;
+    height: 390px;
+    opacity: 1;
+    margin-top: 200px;
+    background-image: url('assets/images/loginbg.png');
+    
 }

@@ -1,19 +1,27 @@
-  <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-  <img title="iCut" width="80" height="80" src="assets/images/logo.png" [routerLink]="['/dashboard']" >
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+  <img title="iCut" width="80" height="80" src="assets/images/logo.png" [routerLink]="['/dashboard']">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="navbar collapse navbar-collapse" id="navbarSupportedContent">
+    <div *ngIf="auth.user | async as user">
+      <img [src]="user.photoURL">
+    </div>
     <ul class="navbar-nav my-2 flex-row ml-md-auto">
+      <li class="nav-item " *ngIf="auth.user | async as user">
+        <a class="nav-link text-uppercase font-weight-bold" (click)="auth.signOut()" >logout</a>
+      </li>
+
       <li class="nav-item ">
         <a class="nav-link text-uppercase font-weight-bold">Sobre iCut</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-uppercase font-weight-bold" href="#">Cadastre-se</a>
+        <a class="nav-link text-uppercase font-weight-bold" [routerLink]="['/register']">Cadastre-se</a>
       </li>
       <li class="nav-item">
-        <button type="button" class="btn btn-outline" [routerLink]="['/login']" >Login</button>
+        <button type="button" class="btn btn-outline" [routerLink]="['/login']">Login</button>
       </li>
     </ul>
   </div>

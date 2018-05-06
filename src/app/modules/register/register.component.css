@@ -1,0 +1,60 @@
+.content{
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/images/register.jpg');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: bisque;
+    text-align: center;
+    padding-bottom: 800px;  
+
+}
+
+.btn {
+   border-radius: 8px;
+   width: 100%;
+   margin-top: 250px;
+  
+}
+
+.form-group {
+    text-align: left;
+    padding-top: 2%;
+    padding-left: 5%;
+   
+}
+
+.form-group-selection {
+    text-align: left;
+    padding-top: 1%;
+    padding-left: 5%;
+   
+}
+.register-form {
+    flex-direction: column;
+    margin-left: -5%;
+    text-align: center;        
+    width:300px;
+    height:300px; 
+   
+}
+
+.container {
+    width: 320px;
+    height: 620px;
+    background-image: url('assets/images/loginbg.png');
+    border-radius: 8px;
+    padding-bottom: 25px;
+    
+}
+
+.content h1 {
+    font-size: 25pt;
+    margin-top: 40px;
+}
+
+.content h2 {
+    font-size: 12pt;
+}
+

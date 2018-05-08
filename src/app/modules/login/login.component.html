@@ -1,21 +1,22 @@
 <div class="content">
+    <h1>Área de login</h1><p>
+        Entre com as suas informacoes abaixo para logar.<p></p>   
   <div class="container">
     <form [formGroup]="userForm" (ngSubmit)="login()">
       <div class="login-form">
         <div class="form-group">
-          <label for="email" id="email">Email address</label>
-          <input type="email" formControlName="email" class="form-control" required placeholder="Enter email">
+          <label for="email" id="email">Endereço de email</label>
+          <input type="email" formControlName="email" class="form-control" required placeholder="Digite seu email">
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" formControlName="password" required class="form-control" placeholder="Password">
+          <label for="password">Senha</label>
+          <input type="password" formControlName="password" required class="form-control" placeholder="Digite sua senha">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Logar</button>
+        <button class="btn btn-block btn-social btn-google"(click)="auth.googleLogin()">
+            <i class="fa fa-google"></i> Logar com google
+        </button>
       </div>
     </form>
-    <button (click)="auth.googleLogin()">
-      <i class="fa fa-google"></i>
-      Conecte-se pelo Google
-    </button>
   </div>
 </div>

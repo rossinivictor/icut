@@ -15,6 +15,7 @@ import { FooterComponent } from './modules/shared/footer/footer.component';
 import { LoginComponent } from './modules/login/login.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { CoreModule } from '../app/core/core.module';
+import { AppRoutingModule } from './app-routing.module';
 
 
 export const firebaseConfig = {
@@ -40,14 +41,8 @@ export const firebaseConfig = {
     FormsModule,
     ReactiveFormsModule,
     CoreModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    RouterModule.forRoot([
-        { path: 'dashboard', component: DashboardComponent},
-        { path: 'login', component: LoginComponent},
-        { path: 'register', component: RegisterComponent},
-        {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-        {path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
-    ])
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

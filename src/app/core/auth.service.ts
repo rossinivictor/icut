@@ -8,11 +8,22 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
-interface User {
+export interface User {
   uid: string;
   email: string;
-  photoURL?: string;
+  name?: string;
+  phone?: string;
   displayName?: string;
+}
+
+export interface Enterprise {
+  uid: string;
+  email: string;
+  cnpj?: number;
+  name?: string;
+  phone?: string;
+  nameReal?: string;
+  address?: string;
 }
 
 
@@ -27,16 +38,16 @@ export class AuthService {
     private router: Router
   ) {
 
-    afs.firestore.settings({timestampsInSnapshots: true});
+    afs.firestore.settings({ timestampsInSnapshots: true });
     // pegando a autenticação do usuário;
     this.user = this.afAuth.authState
-    .switchMap(user => {
-      if (user) {
-        return this.afs.doc<User>(`usuario/${user.uid}`).valueChanges();
-      } else {
-        return Observable.of(null);
-      }
-    });
+      .switchMap(user => {
+        if (user) {
+          return this.afs.doc<User>(`usuario/${user.uid}`).valueChanges();
+        } else {
+          return Observable.of(null);
+        }
+      });
   }
 
   googleLogin() {
@@ -47,12 +58,12 @@ export class AuthService {
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
-        this.updateUserData(credential.user);
+        this.updateUser(credential.user);
       });
   }
 
 
-  private updateUserData(user) {
+  private updateUser(user) {
     // instancia no firestore assim que o usuario logar
 
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`usuario/${user.uid}`);
@@ -60,43 +71,71 @@ export class AuthService {
     const data: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL
     };
 
     return userRef.set(data, { merge: true });
 
   }
 
-  emailSignUp(email: string, password: string) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-    .then((user) => {
-      return this.updateUserData(user);
-    }).catch(
-      (error) => {
-        this.handleError(error);
-      }
-    );
+  private updateUserData(user, credential) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`usuario/${user.uid}`);
+    const data: User = {
+      uid: user.uid,
+      email: user.email,
+      name: credential.name,
+      phone: credential.phone,
+    };
+    return userRef.set(data);
+  }
+
+  private updateEnterpiseData(user, credential) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`estabelecimento/${user.uid}`);
+    const data: Enterprise = {
+      uid: user.uid,
+      email: user.email,
+      cnpj: credential.cnpj,
+      name: credential.name,
+      nameReal: credential.nameReal,
+      phone: credential.phone,
+      address: credential.address
+    };
+    return userRef.set(data);
+  }
+
+  emailSignUp(credential, password: string) {
+
+    return this.afAuth.auth.createUserWithEmailAndPassword(credential.email, password)
+      .then((user) => {
+        if (credential.cnpj) {
+          return this.updateEnterpiseData(user, credential);
+        } else {
+          return this.updateUserData(user, credential);
+        }
+      }).catch(
+        (error) => {
+          this.handleError(error);
+        }
+      );
   }
 
   emailLogin(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-    .then((user) => {
-      return this.updateUserData(user);
-    }).catch(
-      (error) => {
-       this.handleError(error);
-      });
+      .then((user) => {
+        return this.updateUser(user);
+      }).catch(
+        (error) => {
+          this.handleError(error);
+        });
   }
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-        this.router.navigate(['/']);
+      this.router.navigate(['/']);
     });
   }
 
-private handleError(error: Error) {
-  console.log(error);
-}
+  private handleError(error: Error) {
+    console.log(error);
+  }
 
 }

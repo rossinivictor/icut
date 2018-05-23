@@ -1,15 +1,14 @@
 <div class="content">
   <h1>Área de cadastro</h1>
   <p>
-    Por favor forneça todas as informações nos campos abaixo.
+    Defina seu tipo de usuário e forneça todas as informações nos campos abaixo.
     <p></p>
-
-    <button class="btn btn-primary" *ngIf="noUser" (click)="regularChoice()">Cliente</button>
-    <button class="btn btn-primary" *ngIf="noUser" (click)="enterpriseChoice()">Empresa</button>
-
-
+    
+    <input class="choice" type="image" src="assets/images/user.png" *ngIf="noUser" (click)="regularChoice()"/>
+    <input class="choice" type="image" src="assets/images/busi.png" *ngIf="noUser" (click)="enterpriseChoice()"/>
+    
     <div class="container" *ngIf="regularUser">
-      <button class="btn btn-primary" (click)="backChoice()">Voltar</button>
+      <button class="btn btn-back2" (click)="backChoice()">Voltar</button>
       <form [formGroup]="userForm" (ngSubmit)="registerUser()">
         <div class="register-form">
 
@@ -30,14 +29,14 @@
             <input type="phone" formControlName="phone" required class="form-control" placeholder="ex: 21995550011">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary2">Enviar</button>
       </form>
     </div>
 
-    <div class="container" *ngIf="enterpriseUser">
-      <button class="btn btn-primary" (click)="backChoice()">Voltar</button>
+    <div class="container2" *ngIf="enterpriseUser">
+      <button class="btn btn-back" (click)="backChoice()">Voltar</button>
       <form [formGroup]="enterpriseForm" (ngSubmit)="registerEnterprise()">
-        <div class="register-form">
+        <div class="register-form2">
           <div class="form-group">
             <label for="email" id="email">E-mail *</label>
             <input type="email" formControlName="email" class="form-control" required placeholder="ex: ifood@gmail.com">
@@ -75,3 +74,80 @@
 
 
 </div>
+<div class="content">
+  <h1>Área de cadastro</h1>
+  <p>
+    Defina seu tipo de usuário e forneça todas as informações nos campos abaixo.
+    <p></p>
+    
+    <input class="choice" type="image" src="assets/images/user.png" *ngIf="noUser" (click)="regularChoice()"/>
+    <input class="choice" type="image" src="assets/images/busi.png" *ngIf="noUser" (click)="enterpriseChoice()"/>
+    
+    <div class="container" *ngIf="regularUser">
+      <button class="btn btn-back2" (click)="backChoice()">Voltar</button>
+      <form [formGroup]="userForm" (ngSubmit)="registerUser()">
+        <div class="register-form">
+
+          <div class="form-group">
+            <label for="email" id="email">E-mail *</label>
+            <input type="email" formControlName="email" class="form-control" required placeholder="ex: ifood@gmail.com">
+          </div>
+          <div class="form-group">
+            <label for="password" id="password">Senha *</label>
+            <input type="password" formControlName="password" class="form-control" required placeholder="ex: Jose">
+          </div>
+          <div class="form-group">
+            <label for="name" id="name">Nome Completo *</label>
+            <input type="name" formControlName="name" class="form-control" required placeholder="ex: Jose">
+          </div>
+          <div class="form-group">
+            <label for="telefone">Telefone para contato *</label>
+            <input type="phone" formControlName="phone" required class="form-control" placeholder="ex: 21995550011">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary2">Enviar</button>
+      </form>
+    </div>
+
+    <div class="container2" *ngIf="enterpriseUser">
+      <button class="btn btn-back" (click)="backChoice()">Voltar</button>
+      <form [formGroup]="enterpriseForm" (ngSubmit)="registerEnterprise()">
+        <div class="register-form2">
+          <div class="form-group">
+            <label for="email" id="email">E-mail *</label>
+            <input type="email" formControlName="email" class="form-control" required placeholder="ex: ifood@gmail.com">
+          </div>
+          <div class="form-group">
+            <label for="password" id="password">Senha *</label>
+            <input type="password" formControlName="password" class="form-control" required>
+          </div>
+          <div class="form-group">
+              <label for="name" id="name">cnpj *</label>
+              <input type="name" formControlName="cnpj" class="form-control" required placeholder="ex: 123456789">
+            </div>
+  
+          <div class="form-group">
+            <label for="name" id="name">Nome fantasia *</label>
+            <input type="name" formControlName="name" class="form-control" required placeholder="ex: McDonald">
+          </div>
+          <div class="form-group">
+            <label for="name" id="name">Nome *</label>
+            <input type="name" formControlName="nameReal" class="form-control" required placeholder="ex: ">
+          </div>
+          <div class="form-group">
+              <label for="name" id="name">Endereço *</label>
+              <input type="name" formControlName="address" class="form-control" required placeholder="ex: ">
+            </div>
+          <div class="form-group">
+            <label for="telefone">Telefone para contato *</label>
+            <input type="phone" formControlName="phone" required class="form-control" placeholder="ex: 21995550011">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+
+
+
+</div>
+

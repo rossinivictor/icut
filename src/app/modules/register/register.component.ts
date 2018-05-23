@@ -35,7 +35,8 @@ export class RegisterComponent implements OnInit {
     this.userForm = this.fb.group({
       'email': ['', [
         Validators.required,
-        Validators.email
+        Validators.email,
+        Validators.pattern('^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'),
       ]
       ],
       'password': ['', [
@@ -45,11 +46,16 @@ export class RegisterComponent implements OnInit {
       ]
       ],
       'name': ['', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(35)
       ]
       ],
       'phone': ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('[0-9]*'),
+        Validators.minLength(10),
+        Validators.maxLength(10)
       ]
       ]
     });

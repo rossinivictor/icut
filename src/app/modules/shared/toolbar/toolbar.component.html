@@ -7,12 +7,18 @@
 
   <div class="navbar collapse navbar-collapse" id="navbarSupportedContent">
     <!-- <div *ngIf="auth.user | async as user">
-      <img [src]="user.photoURL">
+      olá {{user.name}}
     </div> -->
     <ul class="navbar-nav my-2 flex-row ml-md-auto">
-      <li class="nav-item " *ngIf="auth.user | async; else loggedout">
-        <a class="nav-link text-uppercase font-weight-bold" (click)="auth.signOut()">logout</a>
-      </li>
+      <div *ngIf="auth.user | async; else loggedout">
+        <li class="nav-item ">
+          <a class="nav-link text-uppercase font-weight-bold" (click)="auth.signOut()">logout</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link text-uppercase font-weight-bold">Configuracao de conta</a>
+        </li>
+      </div>
+
       <ng-template #loggedout>
         <li class="nav-item ">
           <a class="nav-link text-uppercase font-weight-bold">Sobre iCut</a>

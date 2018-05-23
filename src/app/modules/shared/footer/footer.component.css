@@ -1,39 +1,37 @@
 .page-footer {
     background-color: rgb(71, 31, 31);
-
+   margin-bottom: 0px;
+   padding-bottom: 0px;
 }
 
 .coluna a {
     color: white;
-
+    padding-bottom: 0px;
 }
 
 .coluna a:hover {
     color: rgb(158, 135, 2);
     text-decoration: none;
+    padding-bottom: 0px;
 }
 
-.mb-5 {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-
-}
-
-.container {
-    margin-top: 0px;
-
-}
 
 .footer-copyright {
     background-color: rgba(0, 0, 0, 0.233);
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
+
 
 .footer-copyright a {
     color: gold;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 .icones {
     text-align: center;
     margin-top: 15px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }

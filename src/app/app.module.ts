@@ -16,6 +16,8 @@ import { LoginComponent } from './modules/login/login.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { CoreModule } from '../app/core/core.module';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './core/auth.guard';
+import { UserComponent } from './modules/user/user.component';
 
 
 export const firebaseConfig = {
@@ -35,6 +37,7 @@ export const firebaseConfig = {
     FooterComponent,
     LoginComponent,
     RegisterComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,7 @@ export const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

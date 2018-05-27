@@ -1,21 +1,50 @@
-  <form [formGroup]="userForm" (ngSubmit)="registerUser()">
-    <div class="register-form">
-      <div class="form-group">
-        <label for="email" id="email">E-mail </label>
-        <input type="email" formControlName="email" class="form-control" required placeholder="ifood@gmail.com">
-      </div>
-      <div class="form-group">
-        <label for="name" id="name">Nome Completo </label>
-        <input type="name" formControlName="name" class="form-control" required placeholder="Jose">
-      </div>
-      <div class="form-group">
-        <label for="telefone">Telefone para contato </label>
-        <input type="phone" formControlName="phone" required class="form-control" placeholder="ex: 21995550011">
-      </div>
-      <div class="form-group">
-        <label for="telefone">Endereco</label>
-        <input type="phone" formControlName="phone" required class="form-control" placeholder="ex: 21995550011">
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary2">Enviar</button>
-  </form>
+  <div *ngIf = "authGuard.normalUser">
+      <form [formGroup]="userForm" (ngSubmit)="setUser()">
+          <div class="register-form">
+            <div class="form-group">
+              <label for="email" id="email">E-mail </label>
+              <input type="email" formControlName="email" class="form-control" value="{{userService.email}}">
+            </div>
+            <div class="form-group">
+              <label for="name" id="name">Nome Completo </label>
+              <input type="name" formControlName="name" class="form-control" value="{{userService.name}}">
+            </div>
+            <div class="form-group">
+              <label for="telefone">Telefone para contato </label>
+              <input type="phone" formControlName="phone" class="form-control" value="{{userService.phone}}">
+            </div>
+            <div class="form-group">
+              <label for="address">Endereco</label>
+              <input type="address" formControlName="address" class="form-control" value="{{userService.address}}" >
+            </div>
+          </div>
+          <button class="btn btn-primary2" [routerLink]="['/dashboard']">Voltar</button>
+          <button type="submit" class="btn btn-primary2">Enviar</button>
+        </form>    
+  </div>
+
+  <div *ngIf = "authGuard.enterpriseUser">
+      <form [formGroup]="enterpriseForm" (ngSubmit)="setUser()">
+          <div class="register-form">
+            <div class="form-group">
+              <label for="email" id="email">E-mail </label>
+              <input type="email" formControlName="email" class="form-control" value="{{userService.email}}">
+            </div>
+            <div class="form-group">
+              <label for="name" id="name">Nome Completo </label>
+              <input type="name" formControlName="name" class="form-control" value="{{userService.name}}">
+            </div>
+            <div class="form-group">
+              <label for="telefone">Telefone para contato </label>
+              <input type="phone" formControlName="phone" class="form-control" value="{{userService.phone}}">
+            </div>
+            <div class="form-group">
+              <label for="address">Endereco</label>
+              <input type="address" formControlName="address" class="form-control" value="{{userService.address}}" >
+            </div>
+          </div>
+          <button class="btn btn-primary2" [routerLink]="['/dashboard']">Voltar</button>
+          <button type="submit" class="btn btn-primary2">Enviar</button>
+        </form>    
+  </div>
+

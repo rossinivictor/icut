@@ -10,10 +10,11 @@ import 'rxjs/add/operator/switchMap';
 
 export interface User {
   uid: string;
-  email: string;
+  email?: string;
   name?: string;
   phone?: string;
   displayName?: string;
+  address?: string;
 }
 
 export interface Enterprise {
@@ -31,6 +32,7 @@ export interface Enterprise {
 export class AuthService {
 
   user: Observable<User>;
+  enterprise: Observable<Enterprise>;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -48,19 +50,27 @@ export class AuthService {
           return Observable.of(null);
         }
       });
-  }
-
-  googleLogin() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    return this.oAuthLogin(provider);
-  }
-
-  private oAuthLogin(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
-      .then((credential) => {
-        this.updateUser(credential.user);
+      this.enterprise = this.afAuth.authState
+      .switchMap(user => {
+        if (user) {
+          return this.afs.doc<User>(`estabelecimento/${user.uid}`).valueChanges();
+        } else {
+          return Observable.of(null);
+        }
       });
   }
+
+  // googleLogin() {
+  //   const provider = new firebase.auth.GoogleAuthProvider();
+  //   return this.oAuthLogin(provider);
+  // }
+
+  // private oAuthLogin(provider) {
+  //   return this.afAuth.auth.signInWithPopup(provider)
+  //     .then((credential) => {
+  //       this.updateUser(credential.user);
+  //     });
+  // }
 
 
   private updateUser(user) {
@@ -77,13 +87,14 @@ export class AuthService {
 
   }
 
-  private updateUserData(user, credential) {
+   updateUserData(user, credential) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`usuario/${user.uid}`);
     const data: User = {
       uid: user.uid,
       email: user.email,
       name: credential.name,
       phone: credential.phone,
+      address: ''
     };
     return userRef.set(data);
   }
@@ -121,7 +132,7 @@ export class AuthService {
   emailLogin(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
-        return this.updateUser(user);
+        // return this.updateUser(user);
       }).catch(
         (error) => {
           this.handleError(error);

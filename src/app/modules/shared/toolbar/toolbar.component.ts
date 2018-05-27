@@ -10,8 +10,20 @@ import { AuthService } from '../../../core/auth.service';
 })
 export class ToolbarComponent implements OnInit {
 
+  public user: boolean;
+
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
+
+  authCondition() {
+    if (this.auth.enterprise) {
+      this.user = true;
+    }
+    if (this.auth.user) {
+      this.user = true;
+    }
+  }
 }
+

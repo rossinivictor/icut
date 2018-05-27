@@ -18,6 +18,7 @@ import { CoreModule } from '../app/core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './core/auth.guard';
 import { UserComponent } from './modules/user/user.component';
+import { UserService } from './core/user.service';
 
 
 export const firebaseConfig = {
@@ -47,7 +48,10 @@ export const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,23 +13,61 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
+  public normalUser: boolean;
+  public enterpriseUser: boolean;
 
   constructor(
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+
+    this.normalUser = false;
+    this.enterpriseUser = false;
+
+    this.authService.user.subscribe(
+      (user) => {
+        if (user !== null) {
+          this.normalUser = true;
+          this.enterpriseUser = false;
+        }
+      }
+    );
+
+    this.authService.enterprise.subscribe(
+      (enterprise) => {
+        if (enterprise !== null) {
+          this.enterpriseUser = true;
+          this.normalUser = false;
+        }
+      }
+    );
+  }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | boolean {
-    return this.authService.user
-    .take(1)
-    .map(user => !! user)
-    .do (loggedIn => {
-      if (!loggedIn) {
-        console.log('denied');
-        this.router.navigate(['/dashboard']);
-      }
-    });
+    if (this.normalUser) {
+      return this.authService.user
+        .take(1)
+        .map(user => !!user)
+        .do(loggedIn => {
+          if (!loggedIn) {
+            console.log('denied');
+            this.router.navigate(['/dashboard']);
+          }
+        });
+    }
+    if (this.enterpriseUser) {
+      return this.authService.enterprise
+        .take(1)
+        .map(user => !!user)
+        .do(loggedIn => {
+          if (!loggedIn) {
+            console.log('denied');
+            this.router.navigate(['/dashboard']);
+          }
+        });
+    }
   }
+
 }

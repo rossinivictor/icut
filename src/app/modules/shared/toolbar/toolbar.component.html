@@ -6,9 +6,6 @@
   </button>
 
   <div class="navbar collapse navbar-collapse" id="navbarSupportedContent">
-    <!-- <div *ngIf="auth.user | async as user">
-      olá {{user.name}}
-    </div> -->
     <ul class="navbar-nav my-2 flex-row ml-md-auto">
       <div *ngIf="auth.user | async; else enterprise">
         <li class="nav-item ">
@@ -27,6 +24,9 @@
         <li class="nav-item ">
             <a class="nav-link text-uppercase font-weight-bold" [routerLink]= "['/profile']">Perfil</a>
         </li>
+        <li class="nav-item ">
+          <a class="nav-link text-uppercase font-weight-bold" [routerLink]= "['/schedule']">Agenda</a>
+      </li>
       </div>
     </ng-template>
 

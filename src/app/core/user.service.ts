@@ -42,9 +42,11 @@ export class UserService {
         (enterprise) => {
           // console.log(enterprise);
           this.uid = enterprise.uid;
+          this.cnpj = enterprise.cnpj;
           this.email = enterprise.email;
           this.name = enterprise.name;
           this.phone = enterprise.phone;
+          this.address = enterprise.address;
         }
       );
     }

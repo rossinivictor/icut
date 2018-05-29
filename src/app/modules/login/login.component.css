@@ -44,10 +44,15 @@
 }
 
 .container {
-    width: 320px;
-    height: 310px;
+    width: 80%;
+    max-width: 500px;
+    min-height: 200px;
+    height: 80%;
     background-image: url('assets/images/loginbg.png');
     border-radius: 8px;
+    padding-bottom: 25px;
+    align-content: center;
+    align-items: center;
         
 }
 

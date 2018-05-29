@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './core/auth.guard';
 import { UserComponent } from './modules/user/user.component';
 import { UserService } from './core/user.service';
+import { ScheduleComponent } from './modules/schedule/schedule.component';
 
 
 export const firebaseConfig = {
@@ -39,6 +40,7 @@ export const firebaseConfig = {
     LoginComponent,
     RegisterComponent,
     UserComponent,
+    ScheduleComponent,
   ],
   imports: [
     BrowserModule,

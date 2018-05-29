@@ -34,6 +34,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.bildFormUser();
+    this.buildFormEnterprise();
   }
 
   bildFormUser() {

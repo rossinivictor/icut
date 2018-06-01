@@ -24,23 +24,23 @@
       <ng-template #enterprise>
       <div *ngIf="auth.enterprise | async; else loggedout">
         <li class="nav-item">
-          <a class="nav-link text-uppercase font-weight-bold" (click)="auth.signOut()">logout</a>
+          <a class="nav-link text-uppercase font-weight-bold" (click)="auth.signOut()"><i class="fa fa-sign-out"></i> logout</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-uppercase font-weight-bold" [routerLink]= "['/profile']">Perfil</a>
+            <a class="nav-link text-uppercase font-weight-bold" [routerLink]= "['/profile']"><i class="fa fa-user-circle"></i> Perfil</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link text-uppercase font-weight-bold" [routerLink]= "['/schedule']">Agenda</a>
+          <a class="nav-link text-uppercase font-weight-bold" [routerLink]= "['/schedule']"><i class="fa fa-book"></i> Agenda</a>
       </li>
       </div>
     </ng-template>
 
       <ng-template #loggedout>
         <li class="nav-item">
-          <a class="nav-link text-uppercase font-weight-bold">Sobre iCut</a>
+          <a class="nav-link text-uppercase font-weight-bold"><i class="fa fa-info-circle"></i> Sobre</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-uppercase font-weight-bold" [routerLink]="['/register']">Cadastre-se</a>
+          <a class="nav-link text-uppercase font-weight-bold" [routerLink]="['/register']"><i class="fa fa-sign-in"></i> Cadastre-se</a>
         </li>
         <li class="nav-item">
           <button type="button" class="btn btn-outline" [routerLink]="['/login']"><span>Login</span></button>

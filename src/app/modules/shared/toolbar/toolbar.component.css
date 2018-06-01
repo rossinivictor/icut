@@ -65,6 +65,9 @@
     color: goldenrod;
 }
 
+.navbar-nav li {
+    display: inline-block;
+}
 
 .btn-outline {
     border-radius: 8px;

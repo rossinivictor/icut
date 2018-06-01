@@ -1,15 +1,63 @@
 main {
     width: auto;
     height: auto;
+    max-height: 800px;
     display: flex;
+    flex-direction: column;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 32%;
+    padding-top: 0px;
+    margin-top: 0px;
+    padding-top: 20%;
+    padding-bottom: 5%;
     padding-bottom: 32%;
     align-content: center;
+    align-items: center;
+    text-align: center;
     background-image: url('assets/images/dashboard.jpg');
-   
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
 }
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+
+}
+
 
 
  .container-fluid {
@@ -54,3 +102,14 @@ main {
     color: white;
     padding: 15px;
 }
+
+.zoom {
+    transition: transform .2s;
+}
+
+.zoom:hover {
+    transform: scale(2);
+}
+
+
+

@@ -1,7 +1,6 @@
 .content-fluid{
     width: auto;
     height: auto;
-    background-image: url('assets/images/register.jpg');
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -11,7 +10,47 @@
     margin-top: 0px;
     padding-top: 5%;
     padding-bottom: 5%;
-   
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+    background-image: url('assets/images/register.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+
+
 }
 
 .options {
@@ -23,17 +62,15 @@
    border-radius: 8px;
 }
 
-.btn-back {
+.btn-secondary {
     width: 95%;
     min-width: 175px;
-    background-color: darkgrey;
     margin-top: 10px;
 }
 
 .btn-primary {
     width: 95%;
     min-width: 175px;
-    background-color: dodgerblue;
     margin-top: 15px;
 }
 
@@ -42,33 +79,16 @@
 .form-group {
     text-align: left;
     padding-top: 2%;
-    padding-left: 5%;
    
 }
 
 .form-group-selection {
     text-align: left;
     padding-top: 1%;
-    padding-left: 5%;
-   
-}
-.register-form {
-    flex-direction: column;
-    margin-left: -2%;
-    align-content: center;        
-    width:100%;
-    height:100%; 
    
 }
 
-.register-form2 {
-    flex-direction: column;
-    margin-left: 0%;
-    text-align: center;        
-    width:300px;
-    height:300px; 
-   
-}
+
 .container {
     width: 80%;
     max-width: 500px;
@@ -97,5 +117,17 @@
     height: auto;
     margin-top: 10px;
     padding:10px;
-    
+    transition: transform .2s;
+    opacity: 0.9;
+}
+
+.choice:hover {
+    transform: scale(1.15);
+    opacity: 1;
+}
+
+.custom {
+    float: left;
+    margin-left: 20px;
+    text-align: left;
 }

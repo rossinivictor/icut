@@ -26,8 +26,8 @@
             </div>
           </div>
           <div class="options">
-          <button class="btn btn-back" [routerLink]="['/dashboard']">Voltar</button>
-          <button type="submit" class="btn btn-primary">Salvar</button>
+          <button class="btn btn-secondary" [routerLink]="['/dashboard']">Voltar</button>
+          <button type="submit" class="btn btn-primary" onclick="salvar()">Salvar</button>
         </div>
         </form>    
   </div>
@@ -52,8 +52,8 @@
               <input type="address" formControlName="address" class="form-control" value="{{userService.address}}" >
             </div>
           </div>
-          <button class="btn btn-back" [routerLink]="['/dashboard']">Voltar</button>
-          <button type="submit" class="btn btn-primary">Salvar</button>
+          <button class="btn btn-secondary" [routerLink]="['/dashboard']">Voltar</button>
+          <button type="submit" class="btn btn-primary" onclick="salvar()">Salvar</button>
         </form>    
   </div>
 

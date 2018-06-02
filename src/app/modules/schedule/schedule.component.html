@@ -1,3 +1,9 @@
-<p>
-  schedule works!
-</p>
+  <form [formGroup]="scheduleForm" (submit)="scheduleSelect(scheduleForm.value)">
+    <div *ngFor="let agenda of agenda.controls; let i=index">
+      <div *ngIf="schedule.agenda[i] !== undefined">
+          <input type="checkbox" [formControl]="agenda"/>{{schedule.agenda[i].nome}}
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  

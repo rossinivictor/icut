@@ -1,0 +1,139 @@
+.content-fluid{
+    width: auto;
+    height: auto;
+    background-image: url('assets/images/register.jpg');
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    color: bisque;
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+
+
+   
+}
+
+.options {
+    display: inline;
+    margin-top: 30%;
+}
+
+.btn {
+   border-radius: 8px;
+}
+
+.btn-secondary {
+    width: 95%;
+    min-width: 175px;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    width: 95%;
+    min-width: 175px;
+    margin-top: 15px;
+}
+
+
+
+.form-group {
+    text-align: left;
+    padding-top: 2%;
+    padding-left: 5%;
+   
+}
+
+.form-group-selection {
+    text-align: left;
+    padding-top: 1%;
+    padding-left: 5%;
+   
+}
+.register-form {
+    flex-direction: column;
+    margin-left: -2%;
+    align-content: center;        
+    width:100%;
+    height:100%; 
+   
+}
+
+.register-form2 {
+    flex-direction: column;
+    margin-left: 0%;
+    text-align: center;        
+    width:300px;
+    height:300px; 
+   
+}
+.container {
+    width: 80%;
+    max-width: 500px;
+    min-height: 450px;
+    height: 80%;
+    background-image: url('assets/images/loginbg.png');
+    border-radius: 8px;
+    padding-bottom: 25px;
+    align-content: center;
+    align-items: center;
+        
+}
+
+.content-fluid h1 {
+    font-size: 25pt;
+    margin-top: 40px;
+}
+
+.content-fluid h2 {
+    font-size: 12pt;
+    margin-top: 40px;
+}
+
+.choice {
+    width: auto;
+    height: auto;
+    margin-top: 10px;
+    padding:10px;
+    
+}

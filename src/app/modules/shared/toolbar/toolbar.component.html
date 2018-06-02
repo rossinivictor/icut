@@ -6,40 +6,44 @@
   </button>
 
   <div class="navbar collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="user" *ngIf="auth.user | async as user">
+      Olá, {{user.name}}.
+    </div>
+
     <ul class="navbar-nav my-2 flex-row ml-md-auto">
       <div *ngIf="auth.user | async; else enterprise">
-        <li class="nav-item ">
+        <li class="nav-item">
           <a class="nav-link text-uppercase font-weight-bold" (click)="auth.signOut()">logout</a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item">
             <a class="nav-link text-uppercase font-weight-bold" [routerLink]= "['/profile']">Perfil</a>
         </li>
       </div>
 
       <ng-template #enterprise>
       <div *ngIf="auth.enterprise | async; else loggedout">
-        <li class="nav-item ">
-          <a class="nav-link text-uppercase font-weight-bold" (click)="auth.signOut()">logout</a>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase font-weight-bold" (click)="auth.signOut()"><i class="fa fa-sign-out"></i> logout</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-uppercase font-weight-bold" [routerLink]= "['/profile']"><i class="fa fa-user-circle"></i> Perfil</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link text-uppercase font-weight-bold" [routerLink]= "['/profile']">Perfil</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link text-uppercase font-weight-bold" [routerLink]= "['/schedule']">Agenda</a>
+          <a class="nav-link text-uppercase font-weight-bold" [routerLink]= "['/schedule']"><i class="fa fa-book"></i> Agenda</a>
       </li>
       </div>
     </ng-template>
 
-
       <ng-template #loggedout>
-        <li class="nav-item ">
-          <a class="nav-link text-uppercase font-weight-bold">Sobre iCut</a>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase font-weight-bold"><i class="fa fa-info-circle"></i> Sobre</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-uppercase font-weight-bold" [routerLink]="['/register']">Cadastre-se</a>
+          <a class="nav-link text-uppercase font-weight-bold" [routerLink]="['/register']"><i class="fa fa-sign-in"></i> Cadastre-se</a>
         </li>
         <li class="nav-item">
-          <button type="button" class="btn btn-outline" [routerLink]="['/login']">Login</button>
+          <button type="button" class="btn btn-outline" [routerLink]="['/login']"><span>Login</span></button>
         </li>
       </ng-template>
     </ul>

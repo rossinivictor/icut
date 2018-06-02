@@ -1,4 +1,11 @@
-  <div *ngIf = "authGuard.normalUser">
+<div class="content-fluid">
+  <h1>Perfil de Usuario</h1>
+  <p>
+    Mantenha sempre atualizados seus dados de usuario! 
+    <p></p>
+    
+  
+  <div class="container" *ngIf = "authGuard.normalUser">
       <form [formGroup]="userForm" (ngSubmit)="setUser()">
           <div class="register-form">
             <div class="form-group">
@@ -18,12 +25,14 @@
               <input type="address" formControlName="address" class="form-control" value="{{userService.address}}" >
             </div>
           </div>
-          <button class="btn btn-primary2" [routerLink]="['/dashboard']">Voltar</button>
-          <button type="submit" class="btn btn-primary2">Enviar</button>
+          <div class="options">
+          <button class="btn btn-secondary" [routerLink]="['/dashboard']">Voltar</button>
+          <button type="submit" class="btn btn-primary" onclick="salvar()">Salvar</button>
+        </div>
         </form>    
   </div>
 
-  <div *ngIf = "authGuard.enterpriseUser">
+  <div class="container" *ngIf = "authGuard.enterpriseUser">
       <form [formGroup]="enterpriseForm" (ngSubmit)="setUser()">
           <div class="register-form">
             <div class="form-group">
@@ -48,8 +57,10 @@
               <input type="address" formControlName="address" class="form-control" value="{{userService.address}}" >
             </div>
           </div>
-          <button class="btn btn-primary2" [routerLink]="['/dashboard']">Voltar</button>
-          <button type="submit" class="btn btn-primary2">Enviar</button>
+          <button class="btn btn-secondary" [routerLink]="['/dashboard']">Voltar</button>
+          <button type="submit" class="btn btn-primary" onclick="salvar()">Salvar</button>
         </form>    
   </div>
+
+</div>
 

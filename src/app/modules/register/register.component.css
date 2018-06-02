@@ -1,7 +1,6 @@
 .content-fluid{
     width: auto;
     height: auto;
-    background-image: url('assets/images/register.jpg');
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -11,99 +10,96 @@
     margin-top: 0px;
     padding-top: 5%;
     padding-bottom: 5%;
-   
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+    background-image: url('assets/images/register.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+
+
 }
 
 .options {
-    display: inline-block;
-    padding: 10px;
- 
+    display: inline;
+    margin-top: 0%;
 }
 
 .btn {
    border-radius: 8px;
-   width: 100%;
-   margin-top: 250px;
-  
+}
+
+.btn-secondary {
+    width: 95%;
+    min-width: 175px;
+    margin-top: 10px;
 }
 
 .btn-primary {
-    position: absolute;
-    width: 100px;
-    margin-top: 370px;
-    margin-left: 40px;
-    background-color: dodgerblue;
-}
-.btn-back {
-    position: absolute;
-    margin-top: 670px;
-    width: 100px;
-    margin-left: -70px;
-
+    width: 95%;
+    min-width: 175px;
+    margin-top: 15px;
 }
 
-.btn-primary2 {
-    position: absolute;
-    width: 100px;
-    margin-top: 100px;
-    margin-left: 35px;
-    background-color: dodgerblue;
-    
-}
-.btn-back2 {
-    position: absolute;
-    margin-top: 400px;
-    width: 100px;
-    margin-left: -75px;
- 
-}
+
 
 .form-group {
     text-align: left;
     padding-top: 2%;
-    padding-left: 5%;
    
 }
 
 .form-group-selection {
     text-align: left;
     padding-top: 1%;
-    padding-left: 5%;
-   
-}
-.register-form {
-    flex-direction: column;
-    margin-left: -5%;
-    text-align: center;        
-    width:300px;
-    height:300px; 
    
 }
 
-.register-form2 {
-    flex-direction: column;
-    margin-left: 0%;
-    text-align: center;        
-    width:300px;
-    height:300px; 
-   
-}
+
 .container {
-    width: 320px;
-    height: 460px;
+    width: 80%;
+    max-width: 500px;
+    min-height: 450px;
+    height: 80%;
     background-image: url('assets/images/loginbg.png');
     border-radius: 8px;
     padding-bottom: 25px;
+    align-content: center;
+    align-items: center;
         
-}
-
-.container2 {
-    width: 320px;
-    height: 730px;
-    background-image: url('assets/images/loginbg.png');
-    border-radius: 8px;
-    padding-bottom: 25px;
-    
 }
 
 .content-fluid h1 {
@@ -121,5 +117,17 @@
     height: auto;
     margin-top: 10px;
     padding:10px;
-    
+    transition: transform .2s;
+    opacity: 0.9;
+}
+
+.choice:hover {
+    transform: scale(1.15);
+    opacity: 1;
+}
+
+.custom {
+    float: left;
+    margin-left: 20px;
+    text-align: left;
 }

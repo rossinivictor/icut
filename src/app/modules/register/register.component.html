@@ -3,11 +3,11 @@
   <p>
     Defina seu tipo de usuário e em seguida forneça todas as informações nos campos abaixo.
     <p></p>
-   
-  <div class="options">
-    <input class="choice" type="image" src="assets/images/user.png" *ngIf="noUser" (click)="regularChoice()"/>
-    <input class="choice" type="image" src="assets/images/busi.png" *ngIf="noUser" (click)="enterpriseChoice()"/>
-  </div>
+
+    <div class="options">
+      <input class="choice" type="image" src="assets/images/user.png" *ngIf="noUser" (click)="regularChoice()" />
+      <input class="choice" type="image" src="assets/images/busi.png" *ngIf="noUser" (click)="enterpriseChoice()" />
+    </div>
     <div class="container" *ngIf="regularUser">
       <form [formGroup]="userForm" (ngSubmit)="registerUser()">
         <div class="register-form">
@@ -49,10 +49,10 @@
             <input type="password" formControlName="password" class="form-control" required>
           </div>
           <div class="form-group">
-              <label for="name" id="name">cnpj *</label>
-              <input type="name" formControlName="cnpj" class="form-control" required placeholder="ex: 123456789">
-            </div>
-  
+            <label for="name" id="name">cnpj *</label>
+            <input type="name" formControlName="cnpj" class="form-control" required placeholder="ex: 123456789">
+          </div>
+
           <div class="form-group">
             <label for="name" id="name">Nome fantasia *</label>
             <input type="name" formControlName="name" class="form-control" required placeholder="ex: McDonald">
@@ -62,9 +62,18 @@
             <input type="name" formControlName="nameReal" class="form-control" required placeholder="ex: ">
           </div>
           <div class="form-group">
-              <label for="name" id="name">Endereço *</label>
-              <input type="name" formControlName="address" class="form-control" required placeholder="ex: ">
-            </div>
+            <label for="name" id="name">Número *</label>
+            <input type="name" formControlName="number" class="form-control" required placeholder="ex: ">
+          </div>
+          <div class="form-group">
+            <label for="name" id="name">Rua *</label>
+            <input type="name" formControlName="street" class="form-control" required placeholder="ex: ">
+          </div>
+          <div class="form-group">
+            <label for="name" id="name">CEP *</label>
+            <input type="name" formControlName="cep" class="form-control" required placeholder="ex: ">
+          </div>
+
           <div class="form-group">
             <label for="telefone">Telefone para contato *</label>
             <input type="phone" formControlName="phone" required class="form-control" placeholder="ex: 21995550011">
@@ -77,4 +86,3 @@
       </form>
     </div>
 </div>
-

@@ -1,4 +1,4 @@
-main {
+/* main {
     width: auto;
     height: auto;
     max-height: 800px;
@@ -16,9 +16,9 @@ main {
     text-align: center;
     background-image: url('assets/images/dashboard.jpg');
     animation: fadein 2s;
-    -moz-animation: fadein 2s; /* Firefox */
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -o-animation: fadein 2s; /* Opera */
+    -moz-animation: fadein 2s; 
+    -webkit-animation: fadein 2s; 
+    -o-animation: fadein 2s; 
     background-attachment: fixed;
     background-repeat: no-repeat;
 
@@ -32,7 +32,7 @@ main {
         opacity:1;
     }
 }
-@-moz-keyframes fadein { /* Firefox */
+@-moz-keyframes fadein { 
     from {
         opacity:0;
     }
@@ -40,7 +40,7 @@ main {
         opacity:1;
     }
 }
-@-webkit-keyframes fadein { /* Safari and Chrome */
+@-webkit-keyframes fadein { 
     from {
         opacity:0;
     }
@@ -48,7 +48,7 @@ main {
         opacity:1;
     }
 }
-@-o-keyframes fadein { /* Opera */
+@-o-keyframes fadein { 
     from {
         opacity:0;
     }
@@ -109,7 +109,9 @@ main {
 
 .zoom:hover {
     transform: scale(2);
-}
+} */
 
-
+agm-map {
+    height: 300px;
+  }
 

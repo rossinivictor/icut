@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { ReactiveFormsModule, FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
+
+import { AngularFirestore } from 'angularfire2/firestore';
+
+import { AuthService } from './../../core/auth.service';
+import { MapsService } from './../../core/maps.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +13,76 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+ public searchForm: FormGroup;
+
+  public user: boolean;
+  public markers: any[];
+  public search: boolean = true;
+
+  public map: any;
+
+  constructor(
+    private mapService: MapsService,
+    private auth: AuthService,
+    private _zone: NgZone,
+    private afs: AngularFirestore,
+    private fb: FormBuilder
+
+  ) {
+    this.buildForm();
+    const markers =  this.afs.collection('local').valueChanges();
+
+    markers.subscribe(
+      (res) => {
+        this.markers = res;
+      }
+    );
+
+}
 
   ngOnInit() {
+
+
+  }
+
+  authCondition() {
+    if (this.auth.enterprise) {
+      this.user = true;
+    }
+    if (this.auth.user) {
+      this.user = true;
+    }
+  }
+
+
+
+  buildForm() {
+    this.searchForm = this.fb.group({
+      'address': ['', [
+        Validators.required
+      ]]
+    });
+  }
+
+  mapReady(map) {
+    this.map = map;
+  }
+
+  searchEnt() {
+    const end = `${this.searchForm.value.address + ', Rio de Janeiro, RJ'}`;
+    this.mapService.getGeocoding(end).subscribe(
+      (res) => {
+        this._zone.run(() => {
+          this.mapService.lat = res.lat();
+          this.mapService.lng = res.lng();
+          console.log(this.mapService.lat);
+          // this.map.setCenter({ lat: this.mapService.lat, lng: this.mapService.lng });       
+         });
+      }, (error) => console.log(error),
+      () => console.log('Geocoding completo!!')
+    );
+    this.search = false;
+
   }
 
 }

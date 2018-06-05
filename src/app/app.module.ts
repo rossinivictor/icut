@@ -5,8 +5,8 @@ import { RouterModule } from '@angular/router';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 
 import { MaterializeModule } from 'angular2-materialize';
-
 import { AngularFireModule } from 'angularfire2';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './core/auth.guard';
 import { UserComponent } from './modules/user/user.component';
 import { UserService } from './core/user.service';
+import { MapsService } from './core/maps.service';
 import { ScheduleComponent } from './modules/schedule/schedule.component';
 
 
@@ -47,11 +48,15 @@ export const firebaseConfig = {
     FormsModule,
     ReactiveFormsModule,
     CoreModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAblX1gaIz0ISIt83BW4kndi2iO7o4Xxj8'
+    }),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
     AuthGuard,
+    MapsService,
     UserService
   ],
   bootstrap: [AppComponent]

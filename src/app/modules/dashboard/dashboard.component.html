@@ -1,12 +1,28 @@
 <main>
-      <div class="container-fluid">
-      <div class="text-h1">
-          <h1 class="main-title">Qualquer barbearia, onde você estiver!
-        </h1>
-      </div>
-      <div class="container-input">
-          <input type="text" placeholder="Digite seu CEP aqui.">
-          <button type="submit" class="btn"><div class="zoom"><i class="fa fa-search" ></i></div></button>
-            </div>   
+  <div *ngIf="auth.user | async as user">
+      <div class="container-fluid" *ngIf="search" >
+          <div class="text-h1">
+            <h1 class="main-title">Qualquer barbearia, onde você estiver!
+            </h1>
+          </div>
+          <div class="container-input">
+              <form [formGroup]="searchForm" (ngSubmit)="searchEnt()">
+                  <input type="text" formControlName="address" placeholder="Digite seu CEP aqui.">
+                  <button type="submit" class="btn">
+                    <div class="zoom">
+                      <i class="fa fa-search"></i>
+                    </div>
+                  </button>
+              </form>
+          </div>
+        </div>
+      
+        <agm-map [latitude]="mapService.lat" [longitude]="mapService.lng" [zoom]="17" *ngIf="search === false">
+          <div *ngFor= "let marker of markers">
+              <agm-marker [latitude]="marker.lat" [longitude]="marker.lng" ></agm-marker>
+          </div>
+        </agm-map>
+      
   </div>
+
 </main>

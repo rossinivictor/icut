@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { MapsService } from './maps.service';
+
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
@@ -24,7 +26,9 @@ export interface Enterprise {
   name?: string;
   phone?: string;
   nameReal?: string;
-  address?: string;
+  number?: string;
+  street?: string;
+  cep?: string;
 }
 
 
@@ -37,6 +41,7 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
+    private mapService: MapsService,
     private router: Router
   ) {
 
@@ -50,7 +55,7 @@ export class AuthService {
           return Observable.of(null);
         }
       });
-      this.enterprise = this.afAuth.authState
+    this.enterprise = this.afAuth.authState
       .switchMap(user => {
         if (user) {
           return this.afs.doc<User>(`estabelecimento/${user.uid}`).valueChanges();
@@ -87,7 +92,7 @@ export class AuthService {
 
   }
 
-   updateUserData(user, credential) {
+  updateUserData(user, credential) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`usuario/${user.uid}`);
     const data: User = {
       uid: user.uid,
@@ -100,6 +105,7 @@ export class AuthService {
   }
 
   private updateEnterpiseData(user, credential) {
+
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`estabelecimento/${user.uid}`);
     const data: Enterprise = {
       uid: user.uid,
@@ -108,17 +114,24 @@ export class AuthService {
       name: credential.name,
       nameReal: credential.nameReal,
       phone: credential.phone,
-      address: credential.address
+      number: credential.number,
+      street: credential.street,
+      cep: credential.cep
     };
+
     return userRef.set(data);
   }
 
+
+
   emailSignUp(credential, password: string) {
 
+     this.mapService.getAdress(`${credential.number + ' ' + credential.street}`);
     return this.afAuth.auth.createUserWithEmailAndPassword(credential.email, password)
       .then((user) => {
         if (credential.cnpj) {
-          return this.updateEnterpiseData(user, credential);
+          this.updateEnterpiseData(user, credential);
+          this.mapService.updateMarkers(user);
         } else {
           return this.updateUserData(user, credential);
         }

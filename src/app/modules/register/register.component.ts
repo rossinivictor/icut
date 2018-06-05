@@ -87,7 +87,15 @@ export class RegisterComponent implements OnInit {
 
       ]
       ],
-      'address': ['', [
+      'street': ['', [
+        Validators.required
+      ]
+      ],
+      'number': ['', [
+        Validators.required
+      ]
+      ],
+      'cep': ['', [
         Validators.required
       ]
       ],
@@ -118,7 +126,8 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    this.authService.emailSignUp(this.userForm.value, this.userForm.value.password).catch(
+    this.authService.emailSignUp(this.userForm.value, this.userForm.value.password)
+    .catch(
       (err) => {
         console.log(err.code);
         console.log(err.message);
@@ -127,6 +136,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerEnterprise() {
+
     this.authService.emailSignUp(this.enterpriseForm.value, this.enterpriseForm.value.password)
       .catch(
         (err) => {

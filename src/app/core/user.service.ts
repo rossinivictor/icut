@@ -46,7 +46,7 @@ export class UserService {
           this.email = enterprise.email;
           this.name = enterprise.name;
           this.phone = enterprise.phone;
-          this.address = enterprise.address;
+          // this.address = enterprise.address;
         }
       );
     }
@@ -72,7 +72,7 @@ export class UserService {
       cnpj: this.cnpj,
       name: this.name,
       phone: this.phone,
-      address: this.address
+      // address: this.address
     };
   }
 

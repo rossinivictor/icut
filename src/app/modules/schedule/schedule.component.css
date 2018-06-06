@@ -1,0 +1,142 @@
+.content-fluid{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    color: bisque;
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+    background-image: url('assets/images/register.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+
+
+}
+
+.options {
+    display: inline;
+    margin-top: 0%;
+}
+
+.btn {
+   border-radius: 8px;
+}
+
+.btn-secondary {
+    width: 95%;
+    min-width: 175px;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    width: 95%;
+    min-width: 175px;
+    margin-top: 15px;
+}
+
+
+
+.form-group {
+    text-align: left;
+    padding-top: 2%;
+   
+}
+
+.form-group-selection {
+    text-align: left;
+    padding-top: 1%;
+   
+}
+
+
+.container {
+    width: 80%;
+    max-width: 350px;
+    min-height: 100px;
+    height: 80%;
+    background-image: url('assets/images/loginbg.png');
+    border-radius: 8px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    align-content: center;
+    align-items: center;
+        
+}
+
+.btn-primary {
+    width: 70%;
+    min-width: 30px;
+    margin-top: 15px;
+    border-radius: 8px;
+}
+
+.content-fluid h1 {
+    font-size: 25pt;
+    margin-top: 40px;
+}
+
+.content-fluid h2 {
+    font-size: 12pt;
+    margin-top: 40px;
+}
+
+.choice {
+    width: auto;
+    height: auto;
+    margin-top: 10px;
+    padding:10px;
+    transition: transform .2s;
+    opacity: 0.9;
+}
+
+.choice:hover {
+    transform: scale(1.15);
+    opacity: 1;
+}
+
+.custom {
+    float: left;
+    margin-left: 20px;
+    text-align: left;
+}

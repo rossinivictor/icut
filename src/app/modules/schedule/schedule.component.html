@@ -1,9 +1,18 @@
+<div class="content-fluid">
+    <i class="fa fa-clock-o" style="font-size:80px;"></i>
+    <h1>Agenda de horários</h1>
+    <p>
+      Selecione quais intervalos de tempo estarão à disposição dos usuários finais.
+      <p></p>
+  <div class="container">
   <form [formGroup]="scheduleForm" (submit)="scheduleSelect(scheduleForm.value)">
     <div *ngFor="let agenda of agenda.controls; let i=index">
       <div *ngIf="schedule.agenda[i] !== undefined">
           <input type="checkbox" [formControl]="agenda"/>{{schedule.agenda[i].nome}}
       </div>
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn-primary">Enviar</button>
   </form>
+  </div>
+</div>
   

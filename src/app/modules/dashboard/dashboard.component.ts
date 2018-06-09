@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
 
   public user: boolean;
   public markers: any[];
+  // tslint:disable-next-line:no-inferrable-types
   public search: boolean = true;
 
   public map: any;
@@ -64,9 +65,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  mapReady(map) {
-    this.map = map;
-  }
 
   searchEnt() {
     const end = `${this.searchForm.value.address + ', Rio de Janeiro, RJ'}`;
@@ -75,8 +73,6 @@ export class DashboardComponent implements OnInit {
         this._zone.run(() => {
           this.mapService.lat = res.lat();
           this.mapService.lng = res.lng();
-          console.log(this.mapService.lat);
-          // this.map.setCenter({ lat: this.mapService.lat, lng: this.mapService.lng });       
          });
       }, (error) => console.log(error),
       () => console.log('Geocoding completo!!')

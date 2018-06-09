@@ -45,6 +45,12 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(25)
       ]
       ],
+      'passwordRepeat': ['', [
+        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+        Validators.minLength(6),
+        Validators.maxLength(25)
+      ]
+      ],
       'name': ['', [
         Validators.required,
         Validators.minLength(3),
@@ -74,6 +80,13 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(25)
       ]
       ],
+      'passwordRepeat': ['', [
+        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+        Validators.minLength(6),
+        Validators.maxLength(25)
+      ]
+      ],
+
       'name': ['', [
         Validators.required
       ]
@@ -126,24 +139,31 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    this.authService.emailSignUp(this.userForm.value, this.userForm.value.password)
-    .catch(
-      (err) => {
-        console.log(err.code);
-        console.log(err.message);
-      }
-    );
-  }
-
-  registerEnterprise() {
-
-    this.authService.emailSignUp(this.enterpriseForm.value, this.enterpriseForm.value.password)
+    if (this.userForm.value.password === this.userForm.value.passwordRepeat) {
+      this.authService.emailSignUp(this.userForm.value, this.userForm.value.password)
       .catch(
         (err) => {
           console.log(err.code);
           console.log(err.message);
         }
       );
+    } else {
+      alert ('A confirmação da senha está diferente da senha!!');
+    }
+  }
+
+  registerEnterprise() {
+    if (this.userForm.value.password === this.userForm.value.passwordRepeat) {
+      this.authService.emailSignUp(this.enterpriseForm.value, this.enterpriseForm.value.password)
+      .catch(
+        (err) => {
+          console.log(err.code);
+          console.log(err.message);
+        }
+      );
+    } else {
+      alert ('A confirmação da senha está diferente da senha!!');
+    }
   }
 
   // emailPassword(email: string, password: string) {

@@ -9,7 +9,11 @@ import {AuthService} from '../../core/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  userForm: FormGroup;
+ public userForm: FormGroup;
+ public passwordReset: FormGroup;
+
+ // tslint:disable-next-line:no-inferrable-types
+ public reset: boolean = false;
 
 
   constructor(
@@ -18,14 +22,15 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.buildForm();
+    this.buildUserForm();
+    this.buildEmailForm();
   }
 
   login() {
     this.auth.emailLogin(this.userForm.value['email'], this.userForm.value['password']);
   }
 
-  buildForm() {
+  buildUserForm() {
     this.userForm = this.fb.group({
       'email': ['', [
         Validators.required,
@@ -38,5 +43,21 @@ export class LoginComponent implements OnInit {
       ]]
     });
   }
+
+  buildEmailForm() {
+    this.passwordReset = this.fb.group({
+      'email': ['', [
+        Validators.required,
+        Validators.email,
+      ]]
+    });
+  }
+tradeForm() {
+this.reset ? this.reset = false : this.reset = true;
+}
+
+resetPassword() {
+  this.auth.resetPassword(this.passwordReset.value.email);
+}
 
 }

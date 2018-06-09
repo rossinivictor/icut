@@ -9,6 +9,7 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/of';
 
 export interface User {
   uid: string;
@@ -145,7 +146,7 @@ export class AuthService {
   emailLogin(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
-        // return this.updateUser(user);
+        this.router.navigate(['/']);
       }).catch(
         (error) => {
           this.handleError(error);
@@ -160,6 +161,17 @@ export class AuthService {
 
   private handleError(error: Error) {
     console.log(error);
+  }
+
+
+  resetPassword(email: string) {
+    return this.afAuth.auth.sendPasswordResetEmail(email)
+      .then(() => {
+        console.log('Email enviado');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
 }

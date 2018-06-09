@@ -18,19 +18,24 @@
           <button type="submit" class="btn btn-primary">Fazer login!</button>
         </div>
       </form>
-      <button (click)="tradeForm()" class="btn btn-primary">Esqueci a Senha</button>
+      <button (click)="tradeForm()" class="btn btn-warning">Esqueci a Senha</button>
     </div>
 </div>
 
 <div class="content-fluid" *ngIf="reset">
+    <i class="fa fa-warning" style="font-size:80px;"></i>
+    <h1>Reset de senha</h1>
+    <p>
+      Entre com as suas informacoes abaixo para redefinir a senha.
+      <p></p>
   <div class="container" >
     <form [formGroup]="passwordReset" (ngSubmit)="resetPassword()">
       <div class="form-group">
-        <label for="email" id="email">Ensira seu e-mail:</label>
+        <label for="email" id="email">Insira seu e-mail cadastrado:</label>
         <input type="email" formControlName="email" class="form-control" required placeholder="Digite seu email">
       </div>
       <button type="submit" class="btn btn-primary">Enviar e-mail</button>
-      <button (click)="tradeForm()" class="btn btn-primary">voltar</button>
+      <button (click)="tradeForm()" class="btn btn-secondary">voltar</button>
     </form>
   </div>
 </div>

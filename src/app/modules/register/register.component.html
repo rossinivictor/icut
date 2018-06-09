@@ -1,4 +1,5 @@
 <div class="content-fluid">
+  <i class="fa fa-sign-in" style="font-size:80px;"></i>
   <h1>Área de cadastro</h1>
   <p>
     Defina seu tipo de usuário e em seguida forneça todas as informações nos campos abaixo.
@@ -36,8 +37,8 @@
           </div>
         </div>
         <div class="options">
-          <button class="btn btn-secondary" [routerLink]="['/dashboard']">Voltar</button>
           <button type="submit" class="btn btn-primary">Enviar</button>
+          <button (click)="backChoice()" class="btn btn-secondary">voltar</button>
         </div>
       </form>
     </div>
@@ -89,8 +90,8 @@
           </div>
         </div>
         <div class="options">
-          <button class="btn btn-secondary" [routerLink]="['/dashboard']">Voltar</button>
           <button type="submit" class="btn btn-primary">Enviar</button>
+          <button (click)="backChoice()" class="btn btn-secondary">voltar</button>
         </div>
       </form>
     </div>

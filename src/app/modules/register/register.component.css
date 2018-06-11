@@ -15,7 +15,6 @@
     -webkit-animation: fadein 2s; /* Safari and Chrome */
     -o-animation: fadein 2s; /* Opera */
     background-image: url('assets/images/register.jpg');
-    background-repeat: no-repeat;
     background-attachment: fixed;
 }
 @keyframes fadein {

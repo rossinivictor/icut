@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+
 import { AuthService, User, Enterprise } from './auth.service';
+import { MapsService } from './maps.service';
 import { AuthGuard } from './auth.guard';
 
 
@@ -16,12 +18,16 @@ export class UserService {
   public uid: string;
   public address: string;
   public cnpj: number;
+  public number: string;
+  public street: string;
+  public cep: string;
 
 
   constructor(
     private afs: AngularFirestore,
     private authService: AuthService,
-    private authGuard: AuthGuard
+    private authGuard: AuthGuard,
+    private mapService: MapsService
   ) { }
 
 
@@ -46,7 +52,9 @@ export class UserService {
           this.email = enterprise.email;
           this.name = enterprise.name;
           this.phone = enterprise.phone;
-          // this.address = enterprise.address;
+          this.number = enterprise.number;
+          this.street = enterprise.street;
+          this.cep = enterprise.cep;
         }
       );
     }
@@ -58,8 +66,7 @@ export class UserService {
       uid: this.uid,
       email: this.email,
       name: this.name,
-      phone: this.phone,
-      address: this.address
+      phone: this.phone
     };
     return userRef.set(data);
   }
@@ -72,8 +79,12 @@ export class UserService {
       cnpj: this.cnpj,
       name: this.name,
       phone: this.phone,
-      // address: this.address
+      cep: this.cep,
+      number: this.number,
+      street: this.street
     };
+    // to do: atualiza o marker;
+    return userRef.update(data);
   }
 
 }

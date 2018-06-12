@@ -65,14 +65,13 @@ export class MapsService {
   }
 
   updateMarkers(user) {
-    const markersRef: AngularFirestoreDocument<any> = this.afs.doc(`local/${user.uid}`);
+    const markersRef: AngularFirestoreDocument<any> = this.afs.doc(`estabelecimento/${user.uid}`);
     const markers = {
       lat: this.lat,
-      lng: this.lng
+      lng: this.lng,
+      uid: user.uid
     };
-
-    return markersRef.set(markers);
-
+    return markersRef.update(markers);
   }
 
 }

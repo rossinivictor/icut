@@ -58,7 +58,11 @@ export class UserComponent implements OnInit {
         Validators.maxLength(10)
       ]
       ],
-      'address': ['', [
+      'number': ['', [
+        Validators.required
+      ]
+      ],
+      'street': ['', [
         Validators.required
       ]
       ]
@@ -92,8 +96,20 @@ export class UserComponent implements OnInit {
         Validators.maxLength(10)
       ]
       ],
-      'address': ['', [
+      'number': ['', [
+        Validators.pattern('[0-9]*'),
         Validators.required
+      ]
+      ],
+      'street': ['', [
+        Validators.required
+      ]
+      ],
+      'cep': ['', [
+        Validators.required,
+        Validators.pattern('[0-9]*'),
+        Validators.minLength(8),
+        Validators.maxLength(8)
       ]
       ]
     });

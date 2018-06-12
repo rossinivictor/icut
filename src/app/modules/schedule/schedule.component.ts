@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormBuilder, Validator, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from '@firebase/util';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 import { AuthService } from '../../core/auth.service';
+import { AgendaService } from '../../core/agenda.service';
 
 @Component({
   selector: 'app-schedule',
@@ -131,7 +131,8 @@ export class ScheduleComponent implements OnInit {
   constructor(
     private afs: AngularFirestore,
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private agendaService: AgendaService
   ) {
     this.formBuilder();
   }
@@ -141,7 +142,7 @@ export class ScheduleComponent implements OnInit {
     this.authService.enterprise.subscribe(
       (ent) => {
         this.uid = ent.uid;
-        this.today = this.dataAtualFormatada();
+        this.today = this.agendaService.dataAtualFormatada();
         this.todaySchedule = this.afs.collection('estabelecimento').doc(ent.uid).collection('agenda').doc(this.today).collection('horario');
         const schedule = this.todaySchedule.valueChanges();
         schedule.subscribe(
@@ -201,20 +202,6 @@ export class ScheduleComponent implements OnInit {
     });
   }
 
-  dataAtualFormatada() {
-    const data = new Date();
-    const dia = data.getDate();
-    if (dia.toString().length === 1) {
-      this.day = '0' + dia;
-    }
-    const mes = data.getMonth() + 1;
-    if (mes.toString().length === 1) {
-      this.month = '0' + mes;
-    }
-    this.year = data.getFullYear().toString();
 
-    const date = this.day + '-' + this.month + '-' + this.year;
-    return date;
-  }
 
 }

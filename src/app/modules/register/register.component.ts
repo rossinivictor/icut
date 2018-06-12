@@ -166,13 +166,4 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  // emailPassword(email: string, password: string) {
-  //   return this.authService.emailSignUp(email, password).catch(
-  //     (err) => {
-  //       console.log(err.code);
-  //       console.log(err.message);
-  //     }
-  //   );
-  // }
-
 }

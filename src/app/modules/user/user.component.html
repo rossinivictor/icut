@@ -54,8 +54,16 @@
               <input type="phone" formControlName="phone" class="form-control" value="{{userService.phone}}">
             </div>
             <div class="form-group">
-              <label for="address">Endereco</label>
-              <input type="address" formControlName="address" class="form-control" value="{{userService.address}}" >
+              <label for="cep">Cep:</label>
+              <input type="cep" formControlName="cep" class="form-control" value="{{userService.cep}}">
+            </div>
+            <div class="form-group">
+              <label for="number">Número</label>
+              <input type="number" formControlName="number" class="form-control" value="{{userService.number}}">
+            </div>
+            <div class="form-group">
+              <label for="street">Rua</label>
+              <input type="street" formControlName="street" class="form-control" value="{{userService.street}}">
             </div>
           </div>
           <button class="btn btn-secondary" [routerLink]="['/dashboard']">Voltar</button>

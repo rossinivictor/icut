@@ -137,4 +137,16 @@ agm-map {
     height: 70vh;
   }
 
+  .marker-title{ 
+    font-weight: 500;
+    font-size: 14px; 
+ }
+ 
+ .back{
+    font-size: 16px;
+    line-height: 38px;
+    padding-left: 5px;
+    padding-right: 5px;
+ }
+
 

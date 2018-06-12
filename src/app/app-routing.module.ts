@@ -7,6 +7,7 @@ import { LoginComponent } from '../app/modules/login/login.component';
 import { RegisterComponent } from '../app/modules/register/register.component';
 import { UserComponent } from '../app/modules/user/user.component';
 import { ScheduleComponent } from '../app/modules/schedule/schedule.component';
+import { AgendaComponent } from '../app/modules/agenda/agenda.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent},
     { path: 'profile', component: UserComponent, canActivate: [AuthGuard] },
     { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
+    { path: 'agenda', component: AgendaComponent, canActivate: [AuthGuard]},
     {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
     {path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
 ];

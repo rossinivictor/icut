@@ -15,7 +15,6 @@
     -webkit-animation: fadein 2s; /* Safari and Chrome */
     -o-animation: fadein 2s; /* Opera */
     background-image: url('assets/images/register.jpg');
-    background-repeat: no-repeat;
     background-attachment: fixed;
 }
 @keyframes fadein {
@@ -102,14 +101,13 @@
         
 }
 
-.content-fluid h1 {
+.content h1 {
     font-size: 25pt;
     margin-top: 40px;
 }
 
-.content-fluid h2 {
+.content h2 {
     font-size: 12pt;
-    margin-top: 40px;
 }
 
 .choice {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AgendaService {
@@ -18,36 +19,43 @@ export class AgendaService {
     private afs: AngularFirestore
   ) { }
 
-getAgenda() {
-  this.today = this.dataAtualFormatada();
-  this.afs.collection('estabelecimento').doc(`${this.uid}`).collection('agenda').doc(`${this.today}`).collection('horario').valueChanges()
-    .subscribe(
-      (schedule) => {
-        this.schedule = [schedule][0];
-      }
-    );
-    return this.schedule;
-}
-
-// transforming the date to dd-MM-yyyy
-dataAtualFormatada() {
-  const data = new Date();
-  const dia = data.getDate();
-  if (dia.toString().length === 1) {
-    this.day = '0' + dia;
-  } else {
-    this.day = dia.toString();
+  getAgenda(): Observable<any[]> {
+    this.today = this.dataAtualFormatada();
+    return this.afs.collection('estabelecimento').doc(`${this.uid}`).collection('agenda').doc(`${this.today}`).collection('horario')
+      .valueChanges();
   }
-  const mes = data.getMonth() + 1;
-  if (mes.toString().length === 1) {
-    this.month = '0' + mes;
-  } else {
-    this.month = mes.toString();
-  }
-  this.year = data.getFullYear().toString();
 
-  const date = this.day + '-' + this.month + '-' + this.year;
-  return date;
-}
+  setSchedule(id, name: string, phone: string, email: string) {
+    // tslint:disable-next-line:max-line-length
+    const newSchedule: AngularFirestoreDocument<any> = this.afs.collection('estabelecimento').doc(`${this.uid}`).collection('agenda').doc(`${this.today}`).collection(`horario`).doc(id);
+    const data = {
+        name: name,
+        phone: phone,
+        email: email
+    };
+
+    return newSchedule.update(data);
+  }
+
+  // transforming the date to dd-MM-yyyy
+  dataAtualFormatada() {
+    const data = new Date();
+    const dia = data.getDate();
+    if (dia.toString().length === 1) {
+      this.day = '0' + dia;
+    } else {
+      this.day = dia.toString();
+    }
+    const mes = data.getMonth() + 1;
+    if (mes.toString().length === 1) {
+      this.month = '0' + mes;
+    } else {
+      this.month = mes.toString();
+    }
+    this.year = data.getFullYear().toString();
+
+    const date = this.day + '-' + this.month + '-' + this.year;
+    return date;
+  }
 
 }

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 import { AuthService, User, Enterprise } from './auth.service';
-import { MapsService } from './maps.service';
 import { AuthGuard } from './auth.guard';
 
 
@@ -26,8 +25,7 @@ export class UserService {
   constructor(
     private afs: AngularFirestore,
     private authService: AuthService,
-    private authGuard: AuthGuard,
-    private mapService: MapsService
+    private authGuard: AuthGuard
   ) { }
 
 

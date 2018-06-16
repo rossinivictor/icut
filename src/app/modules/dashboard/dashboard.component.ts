@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   public name: string;
   public rating: any;
   public map: any;
+  public agenda: any[];
 
   constructor(
     private mapService: MapsService,
@@ -47,19 +48,21 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.auth.enterprise.subscribe(
+      (ent) => {
+        if (ent !== null) {
+          this.agendaService.uid = ent.uid;
+          this.agendaService.getAgenda().subscribe(
+            (agenda) => {
+              if (agenda) {
+                this.agenda = agenda;
+              }
+            }
+          );
+        }
+      }
+    );
   }
-
-  authCondition() {
-    if (this.auth.enterprise) {
-      this.user = true;
-    }
-    if (this.auth.user) {
-      this.user = true;
-    }
-  }
-
-
-
   buildForm() {
     this.searchForm = this.fb.group({
       'address': ['', [

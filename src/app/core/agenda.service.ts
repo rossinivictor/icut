@@ -31,7 +31,8 @@ export class AgendaService {
     const data = {
         name: name,
         phone: phone,
-        email: email
+        email: email,
+        marked: true
     };
 
     return newSchedule.update(data);

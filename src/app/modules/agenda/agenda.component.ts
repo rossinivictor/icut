@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AngularFirestore } from 'angularfire2/firestore';
+import { DxPopupModule } from 'devextreme-angular';
 
 import { AgendaService } from '../../core/agenda.service';
 import { UserService } from '../../core/user.service';
@@ -13,9 +13,11 @@ import { UserService } from '../../core/user.service';
 export class AgendaComponent implements OnInit {
 
   public schedule: any[];
+  // tslint:disable-next-line:no-inferrable-types
+  public popupVisible: boolean = false;
+  public id: string;
 
   constructor(
-    private afs: AngularFirestore,
     private agendaService: AgendaService,
     private userService: UserService
 
@@ -35,16 +37,16 @@ export class AgendaComponent implements OnInit {
     );
   }
 
-  // Mudar para 'Horario' ao invés de ser 'nome', fazer a tela do dashboard fazer com que seja cadastrado o uid ou colocar o id no document
-  setSchedule(id) {
+  saveId(id) {
+    this.id = id.toString();
+  }
 
+  setSchedule() {
     const name = this.userService.name;
     const phone = this.userService.phone;
     const email = this.userService.email;
 
-    console.log(name, phone, email);
-
-    this.agendaService.setSchedule(id, name, phone, email)
+    this.agendaService.setSchedule(this.id, name, phone, email)
     .then(
       (res) => {
         console.log(res);

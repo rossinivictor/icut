@@ -31,7 +31,23 @@
   </div>
 
   <ng-template #enterprise>
-    <div *ngIf="auth.enterprise | async; else loggedOut"></div>
+    <div *ngIf="auth.enterprise | async; else loggedOut">
+        Horários Não marcados:
+      <div *ngFor="let horario of agenda">
+        <div *ngIf="!horario.marked">
+             <button>{{horario.horario}}</button> 
+        </div>
+      </div>
+      <hr>
+      Horários marcados:
+      <div *ngFor="let usuario of agenda">
+        <div *ngIf="usuario.marked">
+          <button>{{usuario.horario}}, {{usuario.name}}, {{usuario.phone}}, {{usuario.email}} </button>
+        </div>
+      </div>
+
+
+    </div>
   </ng-template>
 
   <ng-template #loggedOut>

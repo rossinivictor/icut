@@ -1,4 +1,26 @@
 <h3>Horários disponíveis</h3>
+
 <div *ngFor="let horario of schedule">
-  <button class="btn-large" (click)= "setSchedule(horario.uid)"> {{horario.nome}} </button>
+  <button *ngIf="horario.marked === false " (click)="saveId(horario.id)" data-toggle="modal" data-target="#exampleModal" class="btn-large" > {{horario.horario}} </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div> -->
+        <div class="modal-body">
+          Deseja realmente marcar nesse horário? 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" (click)="setSchedule()" >Marcar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+

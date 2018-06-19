@@ -7,7 +7,7 @@
       </div>
       <div class="container-input">
         <form [formGroup]="searchForm" (ngSubmit)="searchEnt()">
-          <input type="text" formControlName="address" placeholder="Ex: Avenida Presidente Vargas, 500">
+          <input type="text" formControlName="address" placeholder="Ex: Av. Presidente Vargas, 500">
           <button type="submit" class="btn">
             <div class="zoom">
               <i class="fa fa-search"></i>
@@ -32,7 +32,50 @@
 
   <ng-template #enterprise>
     <div *ngIf="auth.enterprise | async; else loggedOut">
-        Horários Não marcados:
+      <div class="agenda">
+        <h2><i class="fa fa-users"></i> Fila de Atendimento</h2>
+        <p>Abaixo está a sua lista de clientes com horário marcado.</p>            
+          <table class="table">
+           <thead>
+            <tr>
+              <th><i class="fa fa-clock-o"></i> Horário</th>
+              <th><i class="fa fa-id-card"></i> Nome</th>
+              <th><i class="fa fa-mobile-phone"></i> Telefone</th>
+              <th><i class="fa fa-envelope"></i> E-mail</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let usuario of agenda">
+            <tr *ngIf="usuario.marked">
+              <td>{{usuario.horario}}</td>
+              <td>{{usuario.name}}</td>
+              <td>{{usuario.phone}}</td>
+              <td>{{usuario.email}}</td>
+            </tr>
+          </tbody>
+          </table>
+          <h2><i class="fa fa-clock-o"></i> Horários Disponíveis</h2>
+          <p>Abaixo está os seus horários habilitados para atendimento, hoje.</p>      
+          <table class="table">
+              <thead>
+                <tr>
+                  <th><i class="fa fa-clock-o"></i> Horário</th>
+                  <th><i class="fa fa-id-card"></i> Nome</th>
+                  <th><i class="fa fa-mobile-phone"></i> Telefone</th>
+                  <th><i class="fa fa-envelope"></i> E-mail</th>
+                </tr>
+             </thead>
+             <tbody *ngFor="let horario of agenda">
+               <tr *ngIf="!horario.marked">
+                 <td>{{horario.horario}}</td>
+                 <td>-</td>
+                 <td>-</td>
+                 <td>-</td>
+               </tr>
+             </tbody>
+             </table>
+        </div>
+      </div>
+      <!-- Horários Não marcados:
       <div *ngFor="let horario of agenda">
         <div *ngIf="!horario.marked">
              <button>{{horario.horario}}</button> 
@@ -47,7 +90,7 @@
       </div>
 
 
-    </div>
+    </div> -->
   </ng-template>
 
   <ng-template #loggedOut>

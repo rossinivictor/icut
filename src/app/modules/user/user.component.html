@@ -1,6 +1,5 @@
 <div class="content-fluid">
-  <i class="fa fa-vcard" style="font-size:80px;"></i>
-  <h1>Perfil de Usuario</h1>
+  <h1><i class="fa fa-vcard"></i> Perfil de Usuario</h1>
   <p>
     Mantenha sempre atualizados seus dados de usuario! 
     <p></p>
@@ -10,19 +9,19 @@
       <form [formGroup]="userForm" (ngSubmit)="setUser()">
           <div class="register-form">
             <div class="form-group">
-              <label for="email" id="email">E-mail </label>
+              <label for="email" id="email"><i class="fa fa-envelope"></i> E-mail </label>
               <input type="email" formControlName="email" class="form-control" value="{{userService.email}}">
             </div>
             <div class="form-group">
-              <label for="name" id="name">Nome Completo </label>
+              <label for="name" id="name"><i class="fa fa-user"></i> Nome Completo </label>
               <input type="name" formControlName="name" class="form-control" value="{{userService.name}}">
             </div>
             <div class="form-group">
-              <label for="telefone">Telefone para contato </label>
+              <label for="telefone"><i class="fa fa-phone"></i> Telefone para contato </label>
               <input type="phone" formControlName="phone" class="form-control" value="{{userService.phone}}">
             </div>
             <div class="form-group">
-              <label for="address">Endereco</label>
+              <label for="address"><i class="fa fa-map-marker"></i> Endereco</label>
               <input type="address" formControlName="address" class="form-control" value="{{userService.address}}" >
             </div>
           </div>
@@ -37,32 +36,32 @@
       <form [formGroup]="enterpriseForm" (ngSubmit)="setUser()">
           <div class="register-form">
             <div class="form-group">
-              <label for="email" id="email">E-mail </label>
+              <label for="email" id="email"><i class="fa fa-envelope"></i> E-mail </label>
               <input type="email" formControlName="email" class="form-control" value="{{userService.email}}">
             </div>
             <div class="form-group">
-              <label for="cnpj" id="cnpj">CNPJ </label>
+              <label for="cnpj" id="cnpj"><i class="fa fa-building"></i> CNPJ </label>
               <input type="cnpj" formControlName="cnpj" class="form-control" value="{{userService.cnpj}}">
             </div>
 
             <div class="form-group">
-              <label for="name" id="name">Nome Completo </label>
+              <label for="name" id="name"><i class="fa fa-user"></i> Nome Completo </label>
               <input type="name" formControlName="name" class="form-control" value="{{userService.name}}">
             </div>
             <div class="form-group">
-              <label for="telefone">Telefone para contato </label>
+              <label for="telefone"><i class="fa fa-phone"></i> Telefone para contato </label>
               <input type="phone" formControlName="phone" class="form-control" value="{{userService.phone}}">
             </div>
             <div class="form-group">
-              <label for="cep">Cep:</label>
+              <label for="cep"><i class="fa fa-map-marker"></i> Cep</label>
               <input type="cep" formControlName="cep" class="form-control" value="{{userService.cep}}">
             </div>
             <div class="form-group">
-              <label for="number">Número</label>
+              <label for="number"><i class="fa fa-map-signs"></i> Número</label>
               <input type="number" formControlName="number" class="form-control" value="{{userService.number}}">
             </div>
             <div class="form-group">
-              <label for="street">Rua</label>
+              <label for="street"><i class="fa fa-map-pin"></i> Rua</label>
               <input type="street" formControlName="street" class="form-control" value="{{userService.street}}">
             </div>
           </div>

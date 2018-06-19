@@ -95,8 +95,8 @@
 
 
 .container {
-    width: 80%;
-    max-width: 350px;
+    width: 30%;
+    max-width: 200px;
     min-height: 100px;
     height: 80%;
     background-image: url('assets/images/loginbg.png');
@@ -110,6 +110,8 @@
 
 .btn-warning {
     padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 8px;
 }
 
 .btn-primary {

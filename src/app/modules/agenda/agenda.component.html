@@ -6,8 +6,7 @@
   <div class="container">
 <div *ngFor="let horario of schedule">
   <button *ngIf="horario.marked === false " (click)="saveId(horario.id)" data-toggle="modal" data-target="#confirmation" class="btn-warning" > {{horario.horario}} </button>
-  <button *ngIf="horario.marked === false " (click)="saveId(horario.id)" data-toggle="modal" data-target="#confirmation" class="btn-large" > {{horario.horario}} </button>
-  <div class="modal fade" id="confirmation" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal fade" id="confirmation" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <!-- <div class="modal-header">

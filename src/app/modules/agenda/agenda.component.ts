@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { DxPopupModule } from 'devextreme-angular';
+import { Router } from '@angular/router';
 
 import { AgendaService } from '../../core/agenda.service';
 import { UserService } from '../../core/user.service';
@@ -19,7 +18,8 @@ export class AgendaComponent implements OnInit {
 
   constructor(
     private agendaService: AgendaService,
-    private userService: UserService
+    private userService: UserService,
+    private route: Router
 
   ) { }
 
@@ -45,11 +45,11 @@ export class AgendaComponent implements OnInit {
     const name = this.userService.name;
     const phone = this.userService.phone;
     const email = this.userService.email;
-
     this.agendaService.setSchedule(this.id, name, phone, email)
     .then(
       (res) => {
         console.log(res);
+        this.route.navigate(['/dashboard']);
       }
     ).catch(
       (error) => {

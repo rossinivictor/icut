@@ -45,10 +45,11 @@
 .coluna a {
     color: white;
     padding-bottom: 0px;
+    transition: 0.5s;
 }
 
 .coluna a:hover {
-    color: rgb(158, 135, 2);
+    color: goldenrod;
     text-decoration: none;
     padding-bottom: 0px;
 }

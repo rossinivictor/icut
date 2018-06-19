@@ -8,7 +8,9 @@ main {
     -o-animation: fadein 2s; /* Opera */
     background-attachment: fixed;
     background-repeat: no-repeat;
-
+    align-content: center;
+    align-items: center;
+    
 }
 
 @keyframes fadein {
@@ -149,4 +151,62 @@ agm-map {
     padding-right: 5px;
  }
 
+.subtitle {
+    font-size: 15pt;
+    color: goldenrod;
+    font-weight: bold;   
+}
 
+.agenda {
+    width: auto;
+    height: auto;
+    background-image: url('assets/images/loginbg.png');
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    color: bisque;
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 70%;
+    min-width: 580px;
+}
+
+
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-image: url('assets/images/loginbg2.png');
+    color: white;
+    text-align: center;
+    border: 0px;
+}
+
+.table tr {
+    background-image: url('assets/images/loginbg.png');
+    color: goldenrod;
+    transition: 0.5s;
+}
+
+.table tr:hover {
+    color: gold;
+    
+}
+
+.table td, th {
+    border-bottom: 1px solid grey;
+}

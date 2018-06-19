@@ -141,7 +141,9 @@ export class ScheduleComponent implements OnInit {
         // get the shedule from firebase
     this.authService.enterprise.subscribe(
       (ent) => {
-        this.uid = ent.uid;
+        if (ent.uid) {
+          this.uid = ent.uid;
+        }
         this.today = this.agendaService.dataAtualFormatada();
         this.todaySchedule = this.afs.collection('estabelecimento').doc(ent.uid).collection('agenda').doc(this.today).collection('horario');
         const schedule = this.todaySchedule.valueChanges();

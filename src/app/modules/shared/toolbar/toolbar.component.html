@@ -23,7 +23,6 @@
 
       <ng-template #enterprise>
       <div *ngIf="auth.enterprise | async; else loggedout">
-        Olá, {{user.name}}!
         <li class="nav-item">
           <a class="nav-link text-uppercase font-weight-bold" (click)="auth.signOut()"><i class="fa fa-sign-out"></i> logout</a>
         </li>

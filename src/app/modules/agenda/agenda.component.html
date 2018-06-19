@@ -1,29 +1,55 @@
 <div class="content-fluid">
+    <div class="modal fade" id="confirmation" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <!-- <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div> -->
+            <div class="modal-body">
+              No momento ainda não estamos aceitando pagamentos online. Deseja marcar mesmo assim?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="setSchedule()" >Marcar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <h1><i class="fa fa-clock-o"></i> Agenda de horários</h1>
     <p>
       Selecione qual horario deseja agendar o serviço.
       <p></p>
-  <div class="container">
+  <div class="row">
+      <div class="collumn">
+  
+<div class="container">
 <div *ngFor="let horario of schedule">
-  <button *ngIf="horario.marked === false " (click)="saveId(horario.id)" data-toggle="modal" data-target="#confirmation" class="btn-warning" > {{horario.horario}} </button>
-    <div class="modal fade" id="confirmation" tabindex="-1" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <!-- <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div> -->
-        <div class="modal-body">
-          Deseja realmente marcar nesse horário? 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="setSchedule()" >Marcar</button>
-        </div>
-      </div>
+  <div *ngIf="horario.marked === false"> 
+    {{horario.horario}}  
+    <button (click)="saveId(horario.id)" data-toggle="modal" data-target="#confirmation" class="btn-warning" > Agendar! </button>
     </div>
+    
+</div>
+    <div>
+   
+  </div>
   </div>
 </div>
+<div class="collumn">
+  <div class="container">
+    <div class="row">
+        <i class="fa fa-scissors"></i>&ensp;Barba:&ensp; <h3>R$ {{prices.barba}}</h3> 
+    </div>
+    <div class="row">
+        <i class="fa fa-scissors"></i>&ensp;Cabelo:&ensp; <h3>R$ {{prices.cabelo}}</h3>
+    </div>
+    <div class="row">
+        <i class="fa fa-scissors"></i>&ensp;Cabelo e Barba:&ensp; <h3>R$ {{prices.cabelo_barba}}</h3>
+</div>
+</div>
+</div>
+
 </div>
 </div>
